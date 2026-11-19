@@ -1,10 +1,7 @@
-# Java 11 runtime image
-FROM eclipse-temurin:11-jre-alpine
+FROM maven:3.9.9-eclipse-temurin-11
 
-ARG artifact=target/spring-boot-web.jar
+WORKDIR /app
 
-WORKDIR /opt/app
+RUN apt-get update && apt-get install -y git
 
-COPY ${artifact} app.jar
-
-ENTRYPOINT ["java","-jar","app.jar"]
+CMD ["cat"]
